@@ -4,8 +4,8 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 const User = require('../models/user');
 
 passport.use(new BasicStrategy(
-	function(userid, password, callback) {
-		User.findOne(, (err, user) => {
+	function(username, password, callback) {
+		User.findOne({ username: username }, (err, user) => {
 			if (err) return callback(err);
 			if (!user) return callback(null, false);
 			user.verifyPassword(password, function(err, isMatch){
@@ -17,4 +17,4 @@ passport.use(new BasicStrategy(
 	}
 ));
 
-exports.isAthenticated = passport.authenticate('basic', { session:false });
+module.exports.isAthenticated = passport.authenticate('basic', { session:false });

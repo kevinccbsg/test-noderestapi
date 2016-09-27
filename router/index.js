@@ -3,19 +3,20 @@ const express = require('express');
 const router = express.Router();
 const beerController = require('../controllers/beerController');
 const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 
 router.route('/beers')
-	.get(beerController.getBeers)
-	.post(beerController.postBeers);
+	.get(authController.isAthenticated, beerController.getBeers)
+	.post(authController.isAthenticated, beerController.postBeers);
 
 //
 router.route('/beers/:beer_id')
-	.get(beerController.getBeer)
-	.put(beerController.putBeer)
-	.delete(beerController.deleteBeer);
+	.get(authController.isAthenticated, beerController.getBeer)
+	.put(authController.isAthenticated, beerController.putBeer)
+	.delete(authController.isAthenticated, beerController.deleteBeer);
 
 router.route('/users')
-	.get(userController.getUsers)
-	.post(userController.postUser);
+	.get(authController.isAthenticated, userController.getUsers)
+	.post(authController.isAthenticated, userController.postUser);
 
 module.exports = router;
