@@ -1,7 +1,8 @@
 'use strict'
 const express = require('express');
 const router = express.Router();
-const beerController = require('../controllers');
+const beerController = require('../controllers/beerController');
+const userController = require('../controllers/userController');
 
 router.route('/beers')
 	.get(beerController.getBeers)
@@ -12,5 +13,9 @@ router.route('/beers/:beer_id')
 	.get(beerController.getBeer)
 	.put(beerController.putBeer)
 	.delete(beerController.deleteBeer);
+
+router.route('/users')
+	.get(userController.getUsers)
+	.post(userController.postUser);
 
 module.exports = router;
