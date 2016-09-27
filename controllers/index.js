@@ -30,7 +30,7 @@ module.exports.getBeers = (req, res, next) => {
 
 module.exports.getBeer = (req, res, next) => {
 	let beerId = req.params.beer_id;
-	Beers.findById(beerId, (err, beer) => {
+	Beer.findById(beerId, (err, beer) => {
 		if (err) {
 			return helper.error(res, next, 'Error to get beer of database: '+ err, 404);
 		}
