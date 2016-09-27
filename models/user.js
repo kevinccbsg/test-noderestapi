@@ -36,4 +36,13 @@ UserSchema.pre('save', function(callback) {
 	});
 });
 
+// Methos for passport validation
+UserSchema.methods.verifyPassword = function(password, callback) {
+	bcrypt.compare(password, this.password, function(err, isMatch) {
+		if (err) return callback(err);
+
+		callback(null, isMatch);
+	});
+};
+
 module.exports = mongoose.model('Users', UserSchema);
