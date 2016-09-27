@@ -16,8 +16,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Execute before each user save() call
-
-UserSchema.pre('save', (callback) => {
+// Caution with ES6 utilities in libraries
+UserSchema.pre('save', function(callback) {
 	let user = this;
 
 	// stop if password hasn't changed
@@ -35,3 +35,5 @@ UserSchema.pre('save', (callback) => {
 		})
 	});
 });
+
+module.exports = mongoose.model('Users', UserSchema);

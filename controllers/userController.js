@@ -22,6 +22,6 @@ module.exports.getUsers = (req, res, next) => {
 	User.find((err, users) => {
 		if (err) return helper.error(res, next, 'Error to get users of database: '+ err, 404);
 
-		return helper.success(res, next, beers, 200);
+		return helper.success(res, next, users, 200);
 	});
 };
