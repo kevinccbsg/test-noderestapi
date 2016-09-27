@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const route = require('./router');
 let port = process.env.PORT || 3000;
+
+mongoose.connect('mongo://localhost:27017/beerlocker');
 // Use the body-parser package in our app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
