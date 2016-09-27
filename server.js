@@ -3,10 +3,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const route = require('./router');
+const router = require('./router');
 let port = process.env.PORT || 3000;
 
-mongoose.connect('mongo://localhost:27017/beerlocker');
+mongoose.connect('mongodb://localhost:27017/beerlocker', (err) => {
+	if (err) { throw err; }
+});
 // Use the body-parser package in our app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

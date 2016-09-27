@@ -12,3 +12,5 @@ router.route('beers/:beer_id')
 	.get(beerController.getBeer)
 	.put(beerController.putBeer)
 	.delete(beerController.deleteBeer);
+
+module.exports = router;

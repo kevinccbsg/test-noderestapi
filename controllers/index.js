@@ -56,7 +56,7 @@ module.exports.putBeer = (req, res, next) => {
 	});
 };
 
-module.exports.deleteBeers = (req, res, next) => {
+module.exports.deleteBeer = (req, res, next) => {
 	let beerId = req.params.beer_id;
 	Beer.findByIdAndRemove(beerId, (err) => {
 		if (err) return helper.error(res, next, 'Error to delete beer of database: '+ err, 404);
